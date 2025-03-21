@@ -1,0 +1,13 @@
+//These three query is for single column to farmat the number column if alredy data is inserted
+
+UPDATE Table_name
+SET to_number = CONCAT('+91', SUBSTR(to_number, 2))
+WHERE LENGTH(to_number) = 11 AND SUBSTR(to_number, 1, 1) = '0';
+
+UPDATE exotel_calls
+SET to_number = CONCAT('+', to_number)
+WHERE LENGTH(to_number) = 12 AND SUBSTR(to_number, 1, 2) = '91';
+
+UPDATE exotel_calls
+SET to_number = CONCAT('+91', to_number)
+WHERE LENGTH(to_number) = 10;
